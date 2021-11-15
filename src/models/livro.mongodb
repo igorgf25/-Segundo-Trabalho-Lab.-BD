@@ -1,0 +1,41 @@
+use('LabDb')
+
+db.estudantes.drop() 
+
+db.createCollection('livros', {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['titulo', 'descricao', 'anoPublicacao', 'autor', 'preco', 'genero'],
+            properties: {
+                title: {
+                    bsonType: 'string',
+                    description: 'Titulo é obrigatório'
+                },
+                descricao: {
+                    bsonType: 'string',
+                    description: 'Descrição é obrigatório'
+                },
+                anoPublicacao: {
+                    bsonType: 'int',
+                    description: 'Ano de publicação é obrigatório'
+                },
+                autor: {
+                    bsonType: 'string',
+                    description: 'Autor é obrigatório'
+                },
+                preco: {
+                    bsonType: 'double',
+                    minimum: 0.00,
+                    description: 'Preço é obrigatório'
+                },
+                genero: {
+                    bsonType: 'string',
+                    description: 'Genero é obrigatório'
+                }
+            }
+        }
+    }
+    validationLevel: 'strict',
+    validationAction: 'error' 
+})

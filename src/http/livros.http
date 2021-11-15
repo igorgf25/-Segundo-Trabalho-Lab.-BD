@@ -1,0 +1,77 @@
+//Teste de Requisições REST - Livros
+@baseURL = http://localhost:4000
+@id = 618f039a773ec50c659fc433
+@ano = 2011
+@autor = cline
+@genero = Aventura
+@titulo = two
+@preco = 33.99
+
+###
+// GET - Lista todos os livros
+GET {{baseURL}}/livros/
+Content-Type: application/json
+
+### 
+// GET - Lista um livro pelo id
+GET {{baseURL}}/livros/{{id}}
+Content-Type: application/json
+
+###
+// GET - Lista livros pelo ano de publicação
+GET {{baseURL}}/livros/ano/{{ano}}
+Content-Type: application/json
+
+###
+// GET - Lista livros pelo autor
+GET {{baseURL}}/livros/autor/{{autor}}
+Content-Type: application/json
+
+###
+// GET - Lista livros pelo genero
+GET {{baseURL}}/livros/genero/{{genero}}
+Content-Type: application/json
+
+###
+// GET - Lista livros pelo titulo
+GET {{baseURL}}/livros/titulo/{{titulo}}
+Content-Type: application/json
+
+###
+// GET - Lista livros pelo preco maximo
+GET {{baseURL}}/livros/maxpreco/{{preco}}
+Content-Type: application/json
+
+###
+// POST - Inclui um novo livro
+POST {{baseURL}}/livros/
+Content-Type: application/json
+
+{
+    "titulo": "Ready Player One",
+    "descricao": "Mundo pos apocaliptico",
+    "anoPublicacao": 2011,
+    "autor": "ernest cline",
+    "preco": 20,
+    "genero": "Aventura"
+}
+
+###
+// PUT - Altera um livro ja incluido no banco de dados
+PUT {{baseURL}}/livros/
+Content-Type: application/json
+
+{
+    "_id": "618f0b8957edc5e7ebd22bc4",
+    "titulo": "Ready Player One",
+    "descricao": "Mundo pos apocaliptico",
+    "anoPublicacao": 2011,
+    "autor": "ernest cline",
+    "preco": 20,
+    "genero": "Aventura"
+}
+
+### 
+// DELETE - Deleta um livro pelo id informado
+DELETE {{baseURL}}/livros/{{id}}
+Content-Type: application/json
